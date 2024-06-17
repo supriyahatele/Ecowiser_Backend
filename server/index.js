@@ -8,7 +8,9 @@ const { RecipeRouter } = require('./routes/recipeRoutes');
 const app = express();
 app.use(express.json());
 app.use(cors())
-
+ app.get('/home',(req,res)=>{
+  res.send("hello world")
+ })
 app.use("/user", UserRouter)
 app.use("/recipe", RecipeRouter)
 app.listen(process.env.PORT, () => {
