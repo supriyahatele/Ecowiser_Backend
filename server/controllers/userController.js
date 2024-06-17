@@ -38,11 +38,11 @@ const Login = async (req, res) => {
         const payload = { userId: user._id };
         jwt.sign(payload, process.env.SECRETKEY, { expiresIn: "12h" }, (err, token) => {
             if (err) throw err;
-            res.json({ token });
+            return res.json({ token:token,username: user.name });
         });
     } catch (err) {
         console.error(err.message);
-        res.status(500).send('Server error');
+       return res.status(500).send('Server error');
     }
 };
 
